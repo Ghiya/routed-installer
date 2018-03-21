@@ -77,7 +77,7 @@ class Installer extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getPackageInstallRoot($package) . $this->getPackageSuffix($package);
+        return $this->getPackageInstallRoot($package) . '/' . $this->getPackageSuffix($package);
     }
 
 
