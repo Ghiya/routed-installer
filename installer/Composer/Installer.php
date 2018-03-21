@@ -20,6 +20,6 @@ class Installer extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'extension-template' === $packageType;
+        return 'template-extension' === $packageType;
     }
 }
