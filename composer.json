@@ -1,0 +1,17 @@
+{
+  "name": "ghiyam/template-extension-installer",
+  "description": "Composer плагин для установки расширений шаблонов веб-проектов.",
+  "type": "composer-plugin",
+  "autoload": {
+    "psr-4": { "extInstaller\\": "installer/" }
+  },
+  "extra": {
+    "class": "extInstaller\\Composer\\Plugin"
+  },
+  "require": {
+    "composer-plugin-api": "^1.0"
+  },
+  "require-dev": {
+    "composer/composer": "^1.3"
+  }
+}
