@@ -24,7 +24,7 @@ class Installer extends LibraryInstaller
     /**
      * Значение ключа параметра `extra` определяющего путь для установки пакета.
      */
-    const INSTALL_ROOT_OPTION = 'install-path';
+    const INSTALL_ROOT_OPTION = 'path';
 
 
     /**
