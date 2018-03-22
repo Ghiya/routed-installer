@@ -1,6 +1,7 @@
 {
   "name": "ghiyam/routed-installer",
   "description": "Composer плагин для установки пакетов в указанные папки структуры проекта.",
+  "version": "1.1.4",
   "type": "composer-plugin",
   "autoload": {
     "psr-4": { "routed\\": "installer/" }
