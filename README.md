@@ -1,23 +1,29 @@
-# template-extension-installer
+# routed-installer
 Composer плагин для установки расширений шаблонов веб-проектов.
 
 История изменений кода в [CHANGELOG.md](CHANGELOG.md).
+
+## Параметры плагина
+
+> Note: Все параметры `extra` являются опциональными и read-only. Без указания дополнительных параметров плагин устанавливает пакет по стандартным правилам Composer.
+
+|параметр|тип|описание|
+|--------|---|--------|
+|`installPath`|string|путь для установки пакета относительно корневого `composer.json`|
+|`filterVendor`|bool|если требуется использовать фильтрацию из пути названия производителя|
 
 ## Пример использования
 
 ```json
 
 {
-
  "require": {
-    "ghiyam/template-extension-installer": "~1.0.0"
+    "ghiyam/routed-installer": "~1.1.0"
   },
   "extra": {
-    "path": "<root_installation_folder>",
-    "vendor": "<vendor_name_to_fliter_from_installation_path>"
+    "installPath": "<relative/path/to/install>",
+    "filterVendor": true
   }
 }
 
 ```
-
-> Note: Параметры `extra` являются опциональными. По-умолчанию расширения устанавливаются в папку `extensions/<package_pretty_name>`

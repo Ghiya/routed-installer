@@ -1,12 +1,12 @@
 {
-  "name": "ghiyam/template-extension-installer",
-  "description": "Composer плагин для установки расширений шаблонов веб-проектов.",
+  "name": "ghiyam/routed-installer",
+  "description": "Composer плагин для установки пакетов в указанные папки структуры проекта.",
   "type": "composer-plugin",
   "autoload": {
-    "psr-4": { "extInstaller\\": "installer/" }
+    "psr-4": { "routed\\": "installer/" }
   },
   "extra": {
-    "class": "extInstaller\\Composer\\Plugin"
+    "class": "routed\\Composer\\Plugin"
   },
   "require": {
     "composer-plugin-api": "^1.0"

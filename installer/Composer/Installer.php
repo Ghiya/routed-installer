@@ -1,75 +1,20 @@
 <?php
 
-namespace extInstaller\Composer;
+namespace routed\Composer;
 
-use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
+use Composer\Package\PackageInterface;
 
 /**
  * Class Installer
  *
- * @package extInstaller\Composer
+ * @package routed\Composer
+ *
  * @author  Ghiya <ghiya@mikadze.me>
+ * @see     RoutedInstaller класс маршрутизируемой установки пакета
  */
 class Installer extends LibraryInstaller
 {
-
-
-    /**
-     * Путь для установки пакета если не переопределён соответствующим параметром `extra`.
-     */
-    const INSTALL_ROOT_DEFAULT = 'extension';
-
-
-    /**
-     * Значение ключа параметра `extra` определяющего путь для установки пакета.
-     */
-    const INSTALL_ROOT_OPTION = 'path';
-
-
-    /**
-     * Значение ключа параметра `extra` определяющего производителя плагина для фильтрации в пути установки.
-     */
-    const VENDOR_OPTION = 'vendor';
-
-
-    /**
-     * Возвращает путь корневого каталога для установки пакета в зависимости от соответствующего `extra` параметра.
-     *
-     * @param PackageInterface $package
-     *
-     * @return string
-     */
-    protected function getPackageInstallRoot(PackageInterface $package)
-    {
-        $extraData = $package->getExtra();
-        return
-            !empty($extraData[self::INSTALL_ROOT_OPTION]) ?
-                $extraData[self::INSTALL_ROOT_OPTION] : self::INSTALL_ROOT_DEFAULT;
-    }
-
-
-    /**
-     * Возвращает фильтрованную часть пути от корневого каталога содержащую название пакета в зависимости от
-     * соответствующего `extra` параметра.
-     *
-     * @param PackageInterface $package
-     *
-     * @return bool|string
-     */
-    protected function getPackageSuffix(PackageInterface $package)
-    {
-        $extraData = $package->getExtra();
-        return
-            !empty($extraData[self::VENDOR_OPTION]) ?
-                preg_replace(
-                    "/" . $extraData[self::VENDOR_OPTION] . "\//i",
-                    "",
-                    $package->getPrettyName()
-                ) :
-                $package->getPrettyName();
-
-    }
 
 
     /**
@@ -77,7 +22,7 @@ class Installer extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->getPackageInstallRoot($package) . '/' . $this->getPackageSuffix($package);
+        return (new RoutedInstaller($package))->getRoutedInstallPath();
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace extInstaller\Composer;
+namespace routed\Composer;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;
@@ -9,7 +9,7 @@ use Composer\Plugin\PluginInterface;
 /**
  * Class Plugin
  *
- * @package extInstaller\Composer
+ * @package routed\Composer
  * @author  Ghiya <ghiya@mikadze.me>
  */
 class Plugin implements PluginInterface
