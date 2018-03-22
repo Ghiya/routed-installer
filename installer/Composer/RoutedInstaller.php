@@ -20,9 +20,15 @@ class RoutedInstaller
 {
 
 
+    /**
+     * Значение пути установки пакета относительно корневого `composer.json` используемое по-умолчанию.
+     */
     const DEFAULT_INSTALL_PATH = 'vendor';
 
 
+    /**
+     * @var array параметры установки
+     */
     private $_params = [];
 
 
@@ -39,11 +45,7 @@ class RoutedInstaller
                 [
                     'packageName' => $package->getPrettyName()
                 ],
-                //$package->getExtra()
-                [
-                    "installPath" => "frontend/assets",
-                    "filterVendor" => true
-                ]
+                $package->getExtra()
             );
     }
 
