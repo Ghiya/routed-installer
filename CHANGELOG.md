@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
-## [v1.1.4] - 2018-03-22
+## [v1.1.6] - 2018-03-22
 
 ### Изменено
 - формирование данных установки и обработка всех параметров плагина вынесены в отдельный класс RoutedInstaller
@@ -21,5 +21,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 - возможность выбора папки для установки и динамической фильтрации производителя пакета в пути установки через дополнительные параметры `extra` в `composer.json`
 
 
-[Разработка]: https://github.com/Ghiya/routed-installer/v1.1.4...HEAD
-[v1.1.4]: https://github.com/Ghiya/routed-installer/compare/v1.1.4...v1.0.0
+[v1.1.4]: https://github.com/Ghiya/routed-installer/compare/v1.1.6...v1.0.0
