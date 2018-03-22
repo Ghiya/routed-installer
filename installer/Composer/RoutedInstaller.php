@@ -37,9 +37,14 @@ class RoutedInstaller
             array_merge(
                 $this->_params,
                 [
-                    'packageName' => $package->getPrettyName()
+                    //'packageName' => $package->getPrettyName()
+                    'packageName' => "ghiyam/jskit"
                 ],
-                $package->getExtra()
+                //$package->getExtra()
+                [
+                    "installPath" => "frontend/assets",
+                    "filterVendor" => true
+                ]
             );
     }
 
@@ -82,7 +87,7 @@ class RoutedInstaller
      */
     public function __isset($name)
     {
-        return !empty($this->_params[$name]);
+        return isset($this->_params[$name]);
     }
 
 
@@ -114,7 +119,7 @@ class RoutedInstaller
         $packageNameList = explode("/", $this->packageName);
         return
             !empty($this->filterVendor) ?
-                (string)array_pop($packageNameList) :
+                (string)end($packageNameList) :
                 $this->packageName;
 
     }
