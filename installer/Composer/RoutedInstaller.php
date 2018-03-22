@@ -37,8 +37,7 @@ class RoutedInstaller
             array_merge(
                 $this->_params,
                 [
-                    //'packageName' => $package->getPrettyName()
-                    'packageName' => "ghiyam/jskit"
+                    'packageName' => $package->getPrettyName()
                 ],
                 //$package->getExtra()
                 [
@@ -101,8 +100,8 @@ class RoutedInstaller
     protected function getPackageRootPath()
     {
         return
-            !empty($this->rootPath) ?
-                $this->rootPath : self::DEFAULT_INSTALL_PATH;
+            !empty($this->installPath) ?
+                $this->installPath : self::DEFAULT_INSTALL_PATH;
     }
 
 
