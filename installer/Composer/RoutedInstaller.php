@@ -111,9 +111,10 @@ class RoutedInstaller
      */
     protected function getPackageRelativePath()
     {
+        $packageNameList = explode("/", $this->packageName);
         return
             !empty($this->filterVendor) ?
-                (string)array_pop(explode("/", $this->packageName)) :
+                (string)array_pop($packageNameList) :
                 $this->packageName;
 
     }
