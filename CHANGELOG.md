@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) 
 and this project adheres to [Semantic Versioning](http://semver.org/)
 
-## [v1.1.0] - 2018-03-22
+## [v1.1.1] - 2018-03-22
 
-## Изменено
+### Изменено
 - формирование данных установки и обработка всех параметров плагина вынесена в отдельный класс RoutedInstaller
 - параметр плагина `path` изменён на `installPath`
 - параметр плагина `vendor` изменён на `filterVendor` с изменением типа параметра на `bool`
@@ -19,4 +19,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/)
 
 
 [Разработка]: https://github.com/Ghiya/routed-installer/v1.1.0...HEAD
-[v1.1.0]: https://github.com/Ghiya/routed-installer/compare/v1.1.0...v1.0.0
+[v1.1.0]: https://github.com/Ghiya/routed-installer/compare/v1.1.1...v1.0.0
