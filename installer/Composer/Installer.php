@@ -31,6 +31,6 @@ class Installer extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return 'template-extension' === $packageType;
+        return 'routed-installation' === $packageType;
     }
 }
