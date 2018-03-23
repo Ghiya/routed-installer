@@ -9,9 +9,10 @@ use Composer\Package\PackageInterface;
  *
  * Класс маршрутизации установки пакета установки относительно указанных параметров `extra` в `composer.json`.
  *
- * @property string $packageName  read-only оригинальное название пакета
- * @property string $installPath  read-only путь для установки пакета относительно корневого `composer.json`
- * @property bool   $filterVendor read-only если требуется использовать фильтрацию из пути названия производителя
+ * @property string $packageName   read-only оригинальное название пакета
+ * @property string $installPath   read-only путь для установки пакета относительно корневого `composer.json`
+ * @property bool   $filterVendor  read-only если требуется использовать фильтрацию из пути названия производителя
+ * @property bool   $filterProject read-only если требуется использовать фильтрацию из пути названия проекта
  *
  * @package routed\Composer
  * @author  Ghiya <ghiya@mikadze.me>
@@ -71,11 +72,11 @@ class RoutedInstaller
      * @param string $name
      * @param mixed  $value
      *
-     * @throws \ErrorException
+     * @throws \Exception always
      */
     public function __set(string $name, mixed $value)
     {
-        throw new \ErrorException("Trying to set read-only property `$name`.");
+        throw new \Exception("Plugin properties are read-only.");
     }
 
 
@@ -96,33 +97,34 @@ class RoutedInstaller
      * Возвращает корневой путь установки пакета относительно расположения корневого `composer.json`.
      * По-умолчанию используется стандартное значение `vendor` контанты `DEFAULT_INSTALL_PATH`.
      *
-     * @see
      * @return string
      */
-    protected function getPackageRootPath()
+    protected function getInstallPathRoot()
     {
         return
-            !empty($this->installPath) ?
-                $this->installPath : self::DEFAULT_INSTALL_PATH;
+            isset($this->installPath) ?
+                $this->installPath . "/" : self::DEFAULT_INSTALL_PATH;
     }
 
 
     /**
-     * Возвращает относительный путь установки пакета.
-     * Если указано в параметрах плагина осуществляя фильтрацию названия производителя из пути.
-     *
+     * Возвращает путь установки пакета относительно корневого пути.
+     * Если указано в параметрах плагина осуществляет фильтрацию названия производителя/названия проекта из пути.
      * По-умолчанию используется стандартное значение получаемое методом `getPrettyName` устанавливаемого пакета.
      *
      * @return string
      */
-    protected function getPackageRelativePath()
+    protected function getInstallPathRelative()
     {
         $packageNameList = explode("/", $this->packageName);
         return
-            !empty($this->filterVendor) ?
-                (string)end($packageNameList) :
-                $this->packageName;
-
+            empty($this->filterVendor) ?
+                empty($this->filterProject) ?
+                    $this->packageName : // should not filter anything
+                    (string)array_shift($packageNameList) : // should filter project but vendor
+                empty($this->filterProject) ?
+                    (string)end($packageNameList) : // should filter vendor but project
+                    ""; // should filter both vendor and project
     }
 
 
@@ -133,7 +135,7 @@ class RoutedInstaller
      */
     public function getRoutedInstallPath()
     {
-        return $this->getPackageRootPath() . '/' . $this->getPackageRelativePath();
+        return $this->getInstallPathRoot() . $this->getInstallPathRelative();
     }
 
 }

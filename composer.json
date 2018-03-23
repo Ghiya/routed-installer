@@ -11,6 +11,7 @@
     "class": "routed\\Composer\\Plugin"
   },
   "require": {
+    "php": ">=7.2.0",
     "composer-plugin-api": "^1.0"
   },
   "require-dev": {
